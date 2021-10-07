@@ -22,7 +22,9 @@ public class ArrayOperations {
      */
 
     public void print() {
-        
+        for(int i = 0; i <numbers.length; i++) {
+        	System.out.print(numbers[i] + ",");
+        }
     }
 
     /**
@@ -30,21 +32,50 @@ public class ArrayOperations {
      * @see <a href="sorting algortihms">http://faculty.cs.niu.edu/~hutchins/csci241/sorting.htm</a>
      */
     public int[] sort() {
-       return null;
+        for (int i = 0; i < numbers.length; i++) {
+        	
+            for (int j=1; j<numbers.length ; j++) {
+            	
+                if(numbers[j]<numbers[j-1]) {
+                	
+                    int temp= numbers[j];
+                    numbers[j] = numbers[j - 1];
+                    numbers[j-1]=temp;
+                }
+            }
+        }    	
+       return numbers;
     }
 
     /**
      * @return the sorted array in reverse order
      */
-    public int[] revertSort() {
-        return null;
+    public int[] revertSort() {  
+    	
+    	int revertResult = 0;    
+    	
+    	int [] arr2 = new int [numbers.length];
+    	
+    	for (int i = numbers.length -1; i >= 0; i--) {
+    		arr2 [revertResult] = numbers[i];
+    		revertResult++;
+    	}
+        return arr2;
     }
 
     /**
      * @return the unsorted array in reverted order.
      */
     public int[] reverted() {
-        return null;
+    	
+    	int revertedResult = 0;
+    	int [] arr3 = new int [numbers.length];
+    	
+    	for (int i = unsorted.length - 1; i >= 0; i--) {
+    		arr3 [revertedResult] = unsorted[i];
+    		revertedResult++;    		
+    	}    	
+        return arr3;
     }
 
     /**
@@ -52,6 +83,11 @@ public class ArrayOperations {
      * @return true if the array contains the value, false otherwise.
      */
     public boolean contains(int value) {
+        for (int i = 0; i < numbers.length; i++) {
+            if(numbers[i] == value) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -59,28 +95,74 @@ public class ArrayOperations {
      * @return the average value of all elements summed up.
      */
     public double average() {
-        return 0.0;
+    	
+    	double sum = 0.0;
+    	
+    	for(int i = 0; i < numbers.length; i++) {
+    		sum = sum + numbers[i];
+    		}
+    	
+    	return sum / numbers.length;      
     }
 
     /**
      * @return the average value of all elements summed up, but without the highest and the lowest value.
      */
     public double trimmedMean() {
-        return 0.0;
+    	
+    	double sum = 0.0;
+    	double max = 0.0;
+    	double min = numbers[0];
+    	
+    	for (int i = 0; i < numbers.length; i++) {
+    		sum = sum + numbers[i];
+    	}
+    	
+		for (int i = 0; i < numbers.length; i++) {
+			if (numbers[i] > max) {
+				max = numbers[i];
+			}
+		}
+		
+		for(int i = 0; i < numbers.length; i++) {
+			if (numbers[i] < min) {
+				min = numbers[i];
+			}
+		}    	
+    	
+    	double mean = (sum - max - min) / (numbers.length - 2);
+    	
+        return mean;
     }
 
     /**
      * @return the max value of the array. In the array [1,9,3] max would be 9.
      */
     public int maxValue() {
-        return 0;
+    	
+    	int maxVal = numbers[0];
+    	
+    	for(int i = 0; i < numbers.length; i++) {
+    		if (numbers[i] > maxVal) {
+    			maxVal = numbers[i];
+    		}
+    	}    	
+        return maxVal;
     }
 
     /**
      * @return the min value of the array. In the array [1,9,3] min would be 1.
      */
     public int minValue() {
-        return 0;
+    	
+    	int minVal = numbers[0];
+    	
+    	for(int i= 0; i < numbers.length; i++) {
+    		if (numbers[i] < minVal) {
+    			minVal = numbers[i];
+    		}
+    	}
+        return minVal;
     }
 
     /* **********************************************************
@@ -88,7 +170,7 @@ public class ArrayOperations {
      *   you like.                                               *
      * ***********************************************************/
 
-    private int someHelper(int[] tmp) {
+    private int someHelper(int[] tmp) {    	
         return 1;
     }
 }
